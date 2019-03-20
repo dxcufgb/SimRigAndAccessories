@@ -1,0 +1,98 @@
+{
+  "BindingsEx": {
+    "dash.speedgraph.val": {
+      "Formula": {
+        "Expression": "[DataCorePlugin.GameData.NewData.SpeedKmh]"
+      },
+      "Mode": 2,
+      "TargetPropertyName": "val"
+    },
+    "wrxstidash.gear.val": {
+      "Formula": {
+        "Expression": "[DataCorePlugin.GameData.NewData.Gear]"
+      },
+      "Mode": 2,
+      "TargetPropertyName": "val"
+    },
+    "wrxstidash.speed.val": {
+      "Formula": {
+        "Interpreter": 1,
+        "Expression": "return $prop('DataCorePlugin.GameData.NewData.SpeedKmh')/1.21739130435;"
+      },
+      "Mode": 2,
+      "TargetPropertyName": "val"
+    },
+    "wrxstidash.odo.txt": {
+      "Formula": {
+        "Interpreter": 1,
+        "Expression": "return ($prop('DataCorePlugin.GameData.NewData.StintOdo')/1000).toFixed(0);"
+      },
+      "Mode": 2,
+      "TargetPropertyName": "txt"
+    },
+    "wrxstidash.rev.val": {
+      "Formula": {
+        "Interpreter": 1,
+        "Expression": "return $prop(\"DataCorePlugin.GameData.NewData.Rpms\")*0.02529413217;\r\n"
+      },
+      "Mode": 2,
+      "TargetPropertyName": "val"
+    },
+    "wrxstidash.infodisp.txt": {
+      "Formula": {
+        "Interpreter": 1,
+        "Expression": "currentLap = (\"0\"+$prop('DataCorePlugin.GameData.NewData.CurrentLap')).slice(-2);\r\nif ($prop('DataCorePlugin.GameData.NewData.totalLaps') == 0) {\r\ntotalLaps = '--';\r\n} else {\r\ntotalLaps = $prop('DataCorePlugin.GameData.NewData.totalLaps');\r\n}\r\nreturn currentLap+'/'+totalLaps+'|'+$prop('DataCorePlugin.GameData.NewData.Position');"
+      },
+      "Mode": 2,
+      "TargetPropertyName": "txt"
+    },
+    "wrxstidash.turbo.val": {
+      "Formula": {
+        "Interpreter": 1,
+        "Expression": "if (root['maxboost'+$prop('DataCorePlugin.GameData.NewData.CarModel')] == null) {\r\nroot['maxboost'+$prop('DataCorePlugin.GameData.NewData.CarModel')] = 0;\r\n}\r\nif ($prop('DataCorePlugin.GameRawData.Boost') > root['maxboost'+$prop('DataCorePlugin.GameData.NewData.CarModel')]) {\r\nroot['maxboost'+$prop('DataCorePlugin.GameData.NewData.CarModel')] = $prop('DataCorePlugin.GameRawData.Boost');\r\n}\r\nif ($prop('DataCorePlugin.GameRawData.Boost') < 0) {\r\nreturn 0;\r\n} else {\r\nreturn ($prop('DataCorePlugin.GameRawData.Boost')/root['maxboost'+$prop('DataCorePlugin.GameData.NewData.CarModel')])*100;\r\n}"
+      },
+      "Mode": 2,
+      "TargetPropertyName": "val"
+    }
+  },
+  "RolesEx": {
+    "dash.rpm": "RPMRole;{}",
+    "dash.lap": "LapRole;{}",
+    "dash.totallap": "LapTotalRole;{}",
+    "dash.position": "PositionRole;{}",
+    "dash.speed": "SpeedRole;{}"
+  },
+  "ClickActionsEx": {},
+  "HotSpots": [],
+  "PagesMappings": [
+    {
+      "PageName": "init",
+      "ConditionToPage": {
+        "Expression": null
+      },
+      "InGame": false,
+      "Idle": true,
+      "Skip": false
+    },
+    {
+      "PageName": "dash",
+      "ConditionToPage": {
+        "Expression": null
+      },
+      "InGame": false,
+      "Idle": false,
+      "Skip": false
+    },
+    {
+      "PageName": "wrxstidash",
+      "ConditionToPage": {
+        "Expression": null
+      },
+      "InGame": true,
+      "Idle": false,
+      "Skip": false
+    }
+  ],
+  "RefreshDelaysEx": {},
+  "VirtualPages": []
+}
