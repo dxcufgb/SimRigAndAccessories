@@ -1,5 +1,5 @@
 # Wires... LOTS of wires...
-This space will be dedicated to my attempts at wiring components together to what will, hopefully, becom an assembly of neat little boxes housing the actual components.
+This space will be dedicated to my attempts at wiring components together to what will, hopefully, become an assembly of neat little boxes housing the actual components.
 
 # 1. DIY USB on-off switch
 
