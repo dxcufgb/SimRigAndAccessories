@@ -14,3 +14,5 @@ Since I'm new to almost everything except basic carpenting and programming this 
 I will upload stuff I make and add links to other peoples work that I use or got inspired from. I make all of this as a "learning-by-doing", or "trying" in my case, where the end goal is to build a complete racing rig, one step at a time.
 
 Since I live in Sweden and I started this project in mid February, I could not start with the actual build before spring arrived so that I could do the woodworking and such outside. so I started tinkering with the dashboard part instead.
+
+(Wiring.md)
