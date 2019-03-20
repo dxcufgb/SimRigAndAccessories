@@ -1,11 +1,8 @@
-# SimRigAndAccessories
-this is a hobby project where I aim to create and assemble a simulation rig for racing games.
-
 Welcome to SimRigAndAccessories!
 
 This all started when I found myself in need of a gear indicator while playing the newly released DiRT 2.0 and always seemed to have the wrong gear out of the hairpins.
 
-Then it sort of got a little bit bigger When I found [Simhub](http://www.simhubdash.com/) and found out all the stuff they were compatible with.
+Then it sort of got a little bit bigger When I found [Simhub](http://www.simhubdash.com/) and found out all the stuff they where compatible with.
 
 this is MAINLY here for me to be able to write and share my ideas and progress on my racing game rig and dashboard attachments!
 
