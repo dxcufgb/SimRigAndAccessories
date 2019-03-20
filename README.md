@@ -15,4 +15,4 @@ I will upload stuff I make and add links to other peoples work that I use or got
 
 Since I live in Sweden and I started this project in mid February, I could not start with the actual build before spring arrived so that I could do the woodworking and such outside. so I started tinkering with the dashboard part instead.
 
-[Wiring section](Wiring.md)
+[Wiring section](Wiring.html)
