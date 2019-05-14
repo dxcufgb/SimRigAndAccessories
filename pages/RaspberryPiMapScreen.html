@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/SimRigAndAccessories/assets/css/style.css?v=6a8cbab828b12154459901fec379181be34ee327">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Raspberry Pi Map Screen | SimRigAndAccessories</title>
+<meta name="generator" content="Jekyll v3.7.4" />
+<meta property="og:title" content="Nextion templates" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="this is a hobby project where I aim to create and assemble a simulation rig for racing games." />
+<meta property="og:description" content="this is a hobby project where I aim to create and assemble a simulation rig for racing games." />
+<link rel="canonical" href="https://dxcufgb.github.io/SimRigAndAccessories/NextionTemplates.html" />
+<meta property="og:url" content="https://dxcufgb.github.io/SimRigAndAccessories/NextionTemplates.html" />
+<meta property="og:site_name" content="SimRigAndAccessories" />
+<script type="application/ld+json">
+{"@type":"WebPage","url":"https://dxcufgb.github.io/SimRigAndAccessories/RaspberryPiMapScreen.html","headline":"Raspberry Pi Map Screen","description":"this is a hobby project where I aim to create and assemble a simulation rig for racing games.","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>SimRigAndAccessories</h1>
+        <h2>this is a hobby project where I aim to create and assemble a simulation rig for racing games.</h2>
+
+        <section id="downloads">
+          
+          <a href="https://github.com/dxcufgb/SimRigAndAccessories" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+	  <table>
+		  <tbody>
+			<tr>
+			  <td><a href="/SimRigAndAccessories/">Home</a></td>
+			  <td><a href="/SimRigAndAccessories/pages/Wiring.html">Wiring section</a></td>
+			  <td><a href="/SimRigAndAccessories/pages/NextionTemplates.html">Nextion dashboards</a></td>
+			  <td><a href="/SimRigAndAccessories/pages/RaspberryPiMapScreen.html">Nextion dashboards</a></td>
+			</tr>
+		  </tbody>
+		</table>
+		<hr/>
+        <h1 id="raspberry-pi-map-screen">Raspberry Pi Map Screen</h1>
+
+<p>Based on: <a href="https://die-antwort.eu/techblog/2017-12-setup-raspberry-pi-for-kiosk-mode/"> die-antwort techblogs</a> post about setting up a lightweight Raspberry Pi web kiosk.</p>
+
+<p>Start of with a fresh raspbian lite image! (Can be found <a href="https://www.raspberrypi.org/downloads/raspbian/">here</a>!)</p>
+
+<p>If you don't know how to install rasbian on your Raspberry check <a href="https://thepi.io/how-to-install-raspbian-on-the-raspberry-pi/">this guide</a>!</p>
+
+<p>Once you've installed, boot your device.</p>
+
+<p>Run "sudo raspi-config" and start by setting up your localization and keyboard language for easier administration. Then configure a new password, your wifi and activate SSH.</p>
+<p>Also go to the "Desktop / CLI" settings and set it to "Console autologin".</p>
+<p>Also set a hostname that you remember, I used the name "MapViewPi"! Short, descriptive and easy to remember!</p>
+<p>once this is done we can do the rest from our regular computer using <a href="https://www.putty.org/" >PuTTY</a> or any similar software and connecting to our easy-to-remember host name.</p>
+
+<p>Reboot the Raspberry and conect via SSH.</p>
+
+<p>run "sudo apt-get update" and "sudo apt-get upgrade".</p>
+
+<p>Install  theese packages to make sure everything works as it should (NOTE, some of theese takes a long time to install):</p>
+<p>"sudo apt-get install --no-install-recommends xserver-xorg x11-xserver-utils xinit openbox"</p>
+<p>"sudo apt-get install --no-install-recommends chromium-browser"</p>
+
+<p>Once this is done we can configure Openbox. Edit /etc/xdg/openbox/autostart and replace its content with the following:</p>
+
+<p>"# Disable any form of screen saver / screen blanking / power management<br/>
+xset s off<br/>
+xset s noblank<br/>
+xset -dpms<br/>
+<br/>
+# Allow quitting the X server with CTRL-ATL-Backspace<br/>
+setxkbmap -option terminate:ctrl_alt_bksp<br/>
+<br/>
+# Start Chromium in kiosk mode<br/>
+sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' ~/.config/chromium/'Local State'<br/>
+sed -i 's/"exited_cleanly":false/"exited_cleanly":true/; s/"exit_type":"[^"]\+"/"exit_type":"Normal"/' ~/.config/chromium/Default/Preferences<br/>
+chromium-browser --disable-infobars --kiosk 'https://{your-computer-running-simhub}:{simhub-dashboard-port}"</p>
+
+<p>Save the file using CTRL+O and then close it using CTRL+X.</p>
+
+<p>run "startx -- -nocursor" on the Raspberry, not through SSH, to test your setup.</p>
+
+<p>Note: if you want to use a specific dashboard you can add "/Dash#{Dashboard-name}" after the port number. for example the complete link could be something like "http://MyGaminPc:8888/Dash#PiDash".</p>
+
+<p>If you get errors related to X you should try running "sudo apt-get install xserver-xorg-legacy" which solved my problems.</p>
+
+<h2>Hyperpixel installation:</h2>
+
+<p>First you need to install git, since it is not installed in the lite version of raspbian:</p>
+<p>"sudo apt-get install git-core"</p>
+<p>then you can check the pimoroni hyperpixel github for instructions, which are incluided below.</p>
+
+<p><a href="https://github.com/pimoroni/hyperpixel4">Pimoroni hyperpixel 4</a></p>
+
+<p>First, clone this GitHub repository to your Pi:</p>
+
+<p>"git clone https://github.com/pimoroni/hyperpixel4"</p>
+
+<p>Then run the installer to install:</p>
+
+<p>"cd hyperpixel4"</p>
+<p>"sudo ./install.sh"</p>
+<p>finish installation with a sudo reboot.</p>
+ 
+<p>Your Raspberry Pi  should now reboot and run on the hyperpixel display.</p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>

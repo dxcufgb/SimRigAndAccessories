@@ -1,4 +1,4 @@
-[Wiring section](/pages/Wiring.html) | [Nextion dashboards](/pages/NextionTemplates.html)
+[Wiring section](/pages/Wiring.html) | [Nextion dashboards](/pages/NextionTemplates.html) | [Raspberry Pi Map Screen](/pages/RaspberryPiMapScreen.html)
 
 ***
 
